@@ -14,9 +14,9 @@ import src/Script
 
 ## Everything checked before the release workflow packages anything.
 ##
-##     blueprint run check
+##     kai run check
 ##
-## `roc-stable`, pinned by Blueprint.roc, runs this script and the golden-test
+## `roc-stable`, pinned by Kaifile.roc, runs this script and the golden-test
 ## driver. The package, the examples and the golden cases are checked with the
 ## `roc` on PATH, which is meant to be the latest nightly. The file examples,
 ## the bundle and the examples archive are the shared release workflow's job:

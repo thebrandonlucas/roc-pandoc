@@ -51,7 +51,7 @@ Script := [].{
 	command = |program| Command.{ base: Cmd.new(program), program }
 
 	## Resolve the stable tooling compiler from `ROC_STABLE`, falling back to the
-	## `roc-stable` that Blueprint provides.
+	## `roc-stable` that Kai provides.
 	roc_stable! : () => Try(Command, _)
 	roc_stable! = || {
 		match Env.var!("ROC_STABLE") {

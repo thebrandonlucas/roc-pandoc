@@ -13,9 +13,17 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
-      - uses: lukewilliamboswell/roc-automation/actions/setup-blueprint@8454f8ed9acc026c85e31e87b132dfeeaf9f1b81
+      - name: Install Kai
+        run: |
+          curl -fsSL https://github.com/thebrandonlucas/kai/releases/download/v0.0.11/install.sh | sh -s -- --version v0.0.11
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+      - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ~/.cache/kai
+          key: kai-${{ runner.os }}-${{ runner.arch }}-test-${{ hashFiles('Kaifile.roc', '.kai/lock.json') }}
+          restore-keys: kai-${{ runner.os }}-${{ runner.arch }}-test-
       - uses: roc-lang/setup-roc@dd81390553b0a1236aedb61cdd4c0ed7cf7eaec4
         with:
           version: nightly
       - run: sudo apt-get update && sudo apt-get install --yes pandoc
-      - run: blueprint run check
+      - run: kai run check
