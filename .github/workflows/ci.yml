@@ -13,9 +13,12 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
-      - uses: lukewilliamboswell/roc-automation/actions/setup-blueprint@8454f8ed9acc026c85e31e87b132dfeeaf9f1b81
+      - uses: thebrandonlucas/kai/.github/actions/setup-kai@fd316fbad644f2e52c620ad83385fcc4b9c31372 # v0.0.12
+        with:
+          version: 0.0.12
+          nix: "false"
       - uses: roc-lang/setup-roc@dd81390553b0a1236aedb61cdd4c0ed7cf7eaec4
         with:
           version: nightly
       - run: sudo apt-get update && sudo apt-get install --yes pandoc
-      - run: blueprint run check
+      - run: kai run check

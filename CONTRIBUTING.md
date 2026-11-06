@@ -1,14 +1,15 @@
 # Contributing to roc-pandoc
 
 Use issues for bugs and design discussion, and pull requests for changes.
-Install Pandoc and unzip, then the Blueprint release named in `Blueprint.roc` and a current Roc nightly
-on `PATH` as `roc`. Blueprint locks the independent repository tooling compiler.
+Install Pandoc and unzip, then the Kai release named at the top of `Kaifile.roc` and a current Roc nightly
+on `PATH` as `roc`. Kai locks the independent repository tooling compiler in `.kai/lock.json`.
 
 ```sh
-blueprint check
-blueprint run check
-blueprint run goldens -- --update
-blueprint run release-package -- test-examples
+kai check
+kai run check
+kai run goldens -- --update
+kai run release-package -- test-examples
+kai workflow ci   # check, then the examples, as a pull request does
 ```
 
 Review golden-output changes before accepting them. Generate both public
